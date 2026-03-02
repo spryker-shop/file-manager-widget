@@ -28,9 +28,6 @@ class FileManagerWidgetPlugin extends AbstractPlugin implements CmsContentWidget
      */
     protected $widgetConfiguration;
 
-    /**
-     * @param \Spryker\Shared\CmsContentWidget\Dependency\CmsContentWidgetConfigurationProviderInterface $widgetConfiguration
-     */
     public function __construct(CmsContentWidgetConfigurationProviderInterface $widgetConfiguration)
     {
         $this->widgetConfiguration = $widgetConfiguration;
@@ -60,11 +57,6 @@ class FileManagerWidgetPlugin extends AbstractPlugin implements CmsContentWidget
         );
     }
 
-    /**
-     * @param string|null $templateIdentifier
-     *
-     * @return string
-     */
     protected function resolveTemplatePath(?string $templateIdentifier = null): string
     {
         if (!$templateIdentifier) {
@@ -95,9 +87,6 @@ class FileManagerWidgetPlugin extends AbstractPlugin implements CmsContentWidget
         return ['files' => $files];
     }
 
-    /**
-     * @return \SprykerShop\Yves\FileManagerWidget\Dependency\Client\FileManagerWidgetToFileManagerStorageClientInterface
-     */
     protected function getFileManagerStorageClient(): FileManagerWidgetToFileManagerStorageClientInterface
     {
         return $this->getFactory()->getFileManagerStorageClient();

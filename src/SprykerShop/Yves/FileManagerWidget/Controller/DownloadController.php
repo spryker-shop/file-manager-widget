@@ -57,11 +57,6 @@ class DownloadController extends AbstractController
         return $this->createDownloadResponse($fileStorageDataTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\FileStorageDataTransfer $fileStorageDataTransfer
-     *
-     * @return \Symfony\Component\HttpFoundation\StreamedResponse
-     */
     protected function createDownloadResponse(FileStorageDataTransfer $fileStorageDataTransfer): StreamedResponse
     {
         $storageFileName = $fileStorageDataTransfer->getStorageFileNameOrFail();

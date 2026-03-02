@@ -16,9 +16,6 @@ class FileManagerWidgetConfigurationProvider implements CmsContentWidgetConfigur
      */
     public const FUNCTION_NAME = 'cms_file';
 
-    /**
-     * @return string
-     */
     public function getFunctionName(): string
     {
         return static::FUNCTION_NAME;
@@ -34,9 +31,6 @@ class FileManagerWidgetConfigurationProvider implements CmsContentWidgetConfigur
         ];
     }
 
-    /**
-     * @return string
-     */
     public function getUsageInformation(): string
     {
         return "{{ cms_file('fileId') }}";

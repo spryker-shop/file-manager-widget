@@ -24,11 +24,6 @@ class FileManagerWidgetToFileManagerServiceBridge implements FileManagerWidgetTo
         $this->fileManagerService = $fileManagerService;
     }
 
-    /**
-     * @param string $fileName
-     *
-     * @return \Generated\Shared\Transfer\FileManagerDataTransfer
-     */
     public function read(string $fileName): FileManagerDataTransfer
     {
         return $this->fileManagerService->read($fileName);
