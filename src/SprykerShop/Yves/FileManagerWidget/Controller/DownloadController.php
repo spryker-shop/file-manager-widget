@@ -43,12 +43,20 @@ class DownloadController extends AbstractController
      */
     public function indexAction(Request $request): StreamedResponse
     {
-        $fileStorageDataTransfer = $this->getFactory()
-            ->getFileManagerStorageClient()
-            ->findFileById(
-                $request->query->getInt(static::PARAM_ID_FILE),
-                $this->getLocale(),
-            );
+        $fileId = $request->query->get(static::PARAM_ID_FILE);
+
+        if ($fileId === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $fileManagerStorageClient = $this->getFactory()->getFileManagerStorageClient();
+
+        if (is_numeric($fileId)) {
+            // @deprecated Passing a numeric file ID is deprecated. Use UUID instead. Kept for backward compatibility.
+            $fileStorageDataTransfer = $fileManagerStorageClient->findFileById((int)$fileId, $this->getLocale());
+        } else {
+            $fileStorageDataTransfer = $fileManagerStorageClient->findFileByUuid((string)$fileId, $this->getLocale());
+        }
 
         if ($fileStorageDataTransfer === null) {
             throw new NotFoundHttpException();

@@ -28,4 +28,9 @@ class FileManagerWidgetToFileManagerStorageClientBridge implements FileManagerWi
     {
         return $this->fileManagerStorageClient->findFileById($idFile, $localeName);
     }
+
+    public function findFileByUuid(string $uuid, string $localeName): ?FileStorageDataTransfer
+    {
+        return $this->fileManagerStorageClient->findFileByUuid($uuid, $localeName);
+    }
 }

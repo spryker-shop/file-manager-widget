@@ -9,7 +9,7 @@
         {% for file in data.files %}
             <li>
                 {% if file.fkFile is defined %}
-                    <a href="{{ path('files/download', {'id-file': file.fkFile}) }}">{{ file.fileName }}</a>
+                    <a href="{{ path('files/download', {'id-file': file.uuid ?? file.fkFile}) }}">{{ file.fileName }}</a>
                 {% else %}
                     <span>{{ file }}</span>
                 {% endif %}

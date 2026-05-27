@@ -12,4 +12,6 @@ use Generated\Shared\Transfer\FileStorageDataTransfer;
 interface FileManagerWidgetToFileManagerStorageClientInterface
 {
     public function findFileById(int $idFile, string $localeName): ?FileStorageDataTransfer;
+
+    public function findFileByUuid(string $uuid, string $localeName): ?FileStorageDataTransfer;
 }
