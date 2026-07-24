@@ -28,12 +28,19 @@ class FileManagerWidgetPlugin extends AbstractPlugin implements CmsContentWidget
      */
     protected $widgetConfiguration;
 
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     */
     public function __construct(CmsContentWidgetConfigurationProviderInterface $widgetConfiguration)
     {
         $this->widgetConfiguration = $widgetConfiguration;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @return callable
      */
     public function getContentWidgetFunction()
@@ -42,12 +49,9 @@ class FileManagerWidgetPlugin extends AbstractPlugin implements CmsContentWidget
     }
 
     /**
-     * @param \Twig\Environment $twig
-     * @param array $context
-     * @param array|string|int $idFiles
-     * @param string|null $templateIdentifier
+     * {@inheritDoc}
      *
-     * @return string
+     * @param array|string|int $idFiles
      */
     public function contentWidgetFunction(Environment $twig, array $context, $idFiles, ?string $templateIdentifier = null): string
     {
