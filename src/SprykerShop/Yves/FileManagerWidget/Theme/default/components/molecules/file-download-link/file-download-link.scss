@@ -1,5 +1,12 @@
+@use 'sass:meta';
+@use 'sass:map';
+
 @mixin file-manager-widget-file-download-link($name: '.file-download-link') {
     #{$name} {
+        @if meta.mixin-exists(file-manager-widget-file-download-link-base-hook) {
+            @include file-manager-widget-file-download-link-base-hook;
+        }
+
         &--icon {
             width: 8.5rem;
         }
@@ -7,7 +14,7 @@
         &__link {
             &--icon {
                 display: block;
-                font-size: map-get($setting-font-size, 'small');
+                font-size: map.get($setting-font-size, 'small');
                 color: $setting-color-darker;
 
                 &:hover {
@@ -20,8 +27,8 @@
             display: block;
             padding: 2rem 0;
             margin-bottom: 0.25rem;
-            background-color: helper-color-light(map-get($setting-color-actions, 'alert'), 57);
-            color: helper-color-light(map-get($setting-color-actions, 'alert'), 20);
+            background-color: helper-color-light(map.get($setting-color-actions, 'alert'), 57);
+            color: helper-color-light(map.get($setting-color-actions, 'alert'), 20);
             text-align: center;
         }
 
@@ -61,6 +68,10 @@
     @include file-manager-widget-file-download-link();
 
     #{$name} {
+        @if meta.mixin-exists(file-download-link-base-hook) {
+            @include file-download-link-base-hook;
+        }
+
         @content;
     }
 }
